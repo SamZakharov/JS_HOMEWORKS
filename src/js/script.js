@@ -1,9 +1,9 @@
 'use strict';
 
-// // 1.
-// for (let i = 10; i <= 20; i++) {
-//     console.log(i);
-// }
+// 1.
+for (let i = 10; i <= 20; i++) {
+    console.log(i);
+}
 //
 //
 // // 2.
