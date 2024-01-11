@@ -1,9 +1,9 @@
 'use strict';
 
-// //1.
-// for (let i = 20; i <= 30; i += 0.5){
-//     console.log(i);
-// }
+//1.
+for (let i = 20; i <= 30; i += 0.5){
+    console.log(i);
+}
 
 // //2.
 // const oneDollarPrice = 27;
@@ -39,15 +39,12 @@
 //     console.log('The number must be greater than 1');
 // }
 
-// 5.
-let num = +prompt('Введите число');
-
-for (let i = 0; i < num; i++){
-    if (Math.pow(3, i) === num) {
-        console.log('mojno');
-    } else {
-        console.log('HET');
-        break;
-    }
-}
-
+// // 5.
+// let userInput = prompt('Please enter the number:');
+// let numberToCheck = parseFloat(userInput);
+//
+// while (numberToCheck !== 1 && (numberToCheck % 3 === 0)) {
+//     numberToCheck /= 3;
+// }
+//
+// console.log((numberToCheck === 1) ? 'This is a square of the number 3.' : 'Is not a square of the number of 3 or a non-numeric or negative value is entered.');
