@@ -1,6 +1,6 @@
 'use strict';
 
-let num = +prompt("enter the number");
+const num = +prompt("enter the number");
 let arr = [];
 
 if (num > 1 || !isNaN(num)) {
