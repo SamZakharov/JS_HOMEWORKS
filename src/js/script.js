@@ -1,7 +1,7 @@
 'use strict';
 
 
-const userNumber = prompt('Введіть дату вашого народження');
+const userNumber = prompt('Введіть число');
 const userAge = parseInt(userNumber);
 
 if (!isNaN(userAge)) {
