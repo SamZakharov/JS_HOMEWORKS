@@ -1,6 +1,5 @@
 'use strict';
 
-
 const userNumber = prompt('Введіть число');
 const userAge = parseInt(userNumber);
 
@@ -11,20 +10,14 @@ if (!isNaN(userAge)) {
         if (userAge > 10 && userAge < 20) {
             userAgeStr = 'років';
         } else {
-            switch (userAge % 10) {
-                case 1 :
-                    userAgeStr = 'рік';
-                    break;
+            const lastDigit = userAge % 10;
 
-                case 2:
-                case 3:
-                case 4:
-                    userAgeStr = 'роки';
-                    break;
-
-                default:
-                    userAgeStr = 'років';
-                    break;
+            if (lastDigit === 1) {
+                userAgeStr = 'рік';
+            } else if (lastDigit >= 2 && lastDigit <= 4) {
+                userAgeStr = 'роки';
+            } else {
+                userAgeStr = 'років'
             }
         }
 
