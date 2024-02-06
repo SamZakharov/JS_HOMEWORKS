@@ -1,1 +1,2 @@
-**Homework description**
+**Reduce**
+Написати свою реалзіацю функції reduce.
