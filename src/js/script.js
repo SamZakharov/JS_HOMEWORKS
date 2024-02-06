@@ -6,8 +6,10 @@ const indexOf = function (arr, searchElement, fromIndex = 0) {
   return -1;
 };
 
+console.log(indexOf(numbers, 4));
+
 const lastIndexOf = function (arr, searchElement, fromIndex = numbers.length - 1) {
-  for (let i = fromIndex; (i) => 0; i -= 1) { // не понимаю почему ESLint берет і в скобки тут круглые, как исправить конфиг не нашел
+  for (let i = fromIndex; i >= 0; i -= 1) {
     if (arr[i] === searchElement) {
       return i;
     }
@@ -15,23 +17,26 @@ const lastIndexOf = function (arr, searchElement, fromIndex = numbers.length - 1
   return -1;
 };
 
-const find = function (arr, searchElement) {
+console.log(lastIndexOf(numbers, 4));
+
+const find = (arr, callback) => {
   for (let i = 0; i < arr.length; i += 1) {
-    if (arr[i] === searchElement) {
-      return arr[i];
-    }
+    if (callback(arr[i], i, arr)) return arr[i];
   }
   return undefined;
 };
 
-const findIndex = function (arr, searchElement) {
+const resFind = find(numbers, (item) => item > 8);
+console.log(resFind);
+
+const findIndex = (arr, callback) => {
   for (let i = 0; i < arr.length; i += 1) {
-    if (arr[i] === searchElement) {
-      return i;
-    }
+    if (callback(arr[i], i, arr)) return i;
   }
-  return undefined;
+  return -1;
 };
+const resFindInd = findIndex(numbers, (item, index) => item === index);
+console.log(resFindInd);
 
 const includes = function (arr, searchElement) {
   for (let i = 0; i < arr.length; i += 1) {
@@ -39,6 +44,7 @@ const includes = function (arr, searchElement) {
   }
   return false;
 };
+console.log(includes(numbers, 4));
 
 const every = function (arr, collback) {
   for (let i = 0; i < arr.length; i += 1) {
@@ -48,6 +54,8 @@ const every = function (arr, collback) {
   }
   return true;
 };
+const allPositive = every(numbers, (number) => number > 0);
+console.log(allPositive);
 
 const some = (arr, callback) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -57,19 +65,6 @@ const some = (arr, callback) => {
   }
   return false;
 };
-
-console.log(indexOf(numbers, 4));
-
-console.log(lastIndexOf(numbers, 4));
-
-console.log(find(numbers, 4));
-
-console.log(findIndex(numbers, 4));
-
-console.log(includes(numbers, 4));
-
-const allPositive = every(numbers, (number) => number > 0);
-console.log(allPositive);
 
 const hasEvenNumber = some(numbers, (item) => item % 2 === 0);
 console.log(hasEvenNumber);
