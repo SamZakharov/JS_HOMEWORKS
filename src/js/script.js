@@ -10,16 +10,11 @@ const DATA_KEY = 'todoItems';
     const wrapper = document.createElement('div');
     wrapper.className = 'col-4';
 
-    if (!config.title && !config.description) {
-      const wrapperNoData = document.createElement('div');
-      wrapperNoData.innerHTML = '<div><b><h1>NO DATA</h1></b></div>';
-      toDoItemsContainer.append(wrapperNoData);
-    } else {
-      wrapper.innerHTML = `<div class="taskWrapper">
+    wrapper.innerHTML = `<div class="taskWrapper">
                           <div class="taskHeading">${config.title}</div>
                           <div class="taskDescription">${config.description}</div>
                          </div>`;
-    }
+
     return wrapper;
   };
 
@@ -27,17 +22,28 @@ const DATA_KEY = 'todoItems';
     toDoItemsContainer.append(element);
   };
 
-  const localStorageItems = JSON.parse(localStorage.getItem(DATA_KEY));
-  if (localStorageItems && localStorageItems.length > 0) {
-    localStorageItems.forEach((item) => {
-      const toDoItem = createToDoItemTemplate(item);
-      toDoItems.push(item);
-      renderToDoItem(toDoItem);
-    });
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const localStorageItems = JSON.parse(localStorage.getItem(DATA_KEY));
+    if (localStorageItems && localStorageItems.length > 0) {
+      localStorageItems.forEach((item) => {
+        const toDoItem = createToDoItemTemplate(item);
+        toDoItems.push(item);
+        renderToDoItem(toDoItem);
+      });
+    } else {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'col-4';
+      const wrapperNoData = document.createElement('div');
+      wrapperNoData.innerHTML = '<div class="no-data-message"><b><h1>NO DATA</h1></b></div>';
+      toDoItemsContainer.append(wrapperNoData);
+    }
+  });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const noDatraMessageEl = document.querySelector('.no-data-message');
+    noDatraMessageEl && noDatraMessageEl.remove();
 
     const inputs = e.target.querySelectorAll('input, textarea');
     const data = {};
