@@ -3,7 +3,6 @@ const Model = {
 
   get todos() {
     const data = JSON.parse(localStorage.getItem(this.key));
-
     return data || [];
   },
 
