@@ -1,10 +1,11 @@
 const Controller = {
   form: document.querySelector('form[data-todo-form]'),
+  toDoItems: [],
 
   formHadler(e) {
     e.preventDefault();
-    const noDatraMessageEl = document.querySelector('.no-data-message');
-    noDatraMessageEl && noDatraMessageEl.remove();
+    const noDataMessageEl = document.querySelector('.no-data-message');
+    noDataMessageEl && noDataMessageEl.remove();
 
     const inputs = e.target.querySelectorAll('input, textarea');
     const data = {};
@@ -18,8 +19,9 @@ const Controller = {
     View.addTodoItemToList(savedItem);
     View.resetForm();
 
-    toDoItems.push(data);
-    localStorage.setItem(DATA_KEY, JSON.stringify(toDoItems));
+    // Controller.toDoItems.push(data);
+    // localStorage.setItem(DATA_KEY, JSON.stringify(Controller.toDoItems));
+    // console.log(this.toDoItems);
   },
 
   loadedHandler() {

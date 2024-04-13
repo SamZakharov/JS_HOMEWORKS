@@ -1,4 +1,4 @@
-const DATA_KEY = 'todoItems';
+// const DATA_KEY = 'todoItems';
 
 (function () {
   const form = document.querySelector('form[data-todo-form]');
@@ -22,36 +22,36 @@ const DATA_KEY = 'todoItems';
     toDoItemsContainer.append(element);
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const localStorageItems = JSON.parse(localStorage.getItem(DATA_KEY));
-    if (localStorageItems && localStorageItems.length > 0) {
-      localStorageItems.forEach((item) => {
-        const toDoItem = createToDoItemTemplate(item);
-        toDoItems.push(item);
-        renderToDoItem(toDoItem);
-      });
-    } else {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'col-4';
-      const wrapperNoData = document.createElement('div');
-      wrapperNoData.innerHTML = '<div class="no-data-message"><b><h1>NO DATA</h1></b></div>';
-      toDoItemsContainer.append(wrapperNoData);
-    }
-  });
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   const localStorageItems = JSON.parse(localStorage.getItem(DATA_KEY));
+  //   if (localStorageItems && localStorageItems.length > 0) {
+  //     localStorageItems.forEach((item) => {
+  //       const toDoItem = createToDoItemTemplate(item);
+  //       toDoItems.push(item);
+  //       renderToDoItem(toDoItem);
+  //     });
+  //   } else {
+  //     const wrapper = document.createElement('div');
+  //     wrapper.className = 'col-4';
+  //     const wrapperNoData = document.createElement('div');
+  //     wrapperNoData.innerHTML = '<div class="no-data-message"><b><h1>NO DATA</h1></b></div>';
+  //     toDoItemsContainer.append(wrapperNoData);
+  //   }
+  // });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const noDatraMessageEl = document.querySelector('.no-data-message');
-    noDatraMessageEl && noDatraMessageEl.remove();
+    const noDataMessageEl = document.querySelector('.no-data-message');
+    noDataMessageEl && noDataMessageEl.remove();
 
     const inputs = e.target.querySelectorAll('input, textarea');
     const data = {};
 
-    for (const input of inputs) {
-      if (!input.value.trim()) return alert('Please fill in all fields');
-      data[input.name] = input.value;
-    }
+    // for (const input of inputs) {
+    //   if (!input.value.trim()) return alert('Please fill in all fields');
+    //   data[input.name] = input.value;
+    // }
 
     const toDoItem = createToDoItemTemplate(data);
     renderToDoItem(toDoItem);
