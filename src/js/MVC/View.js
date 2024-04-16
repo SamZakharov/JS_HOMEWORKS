@@ -1,4 +1,4 @@
-const DATA_KEY = 'todoItems';
+const DATA_KEY = 'data';
 
 const View = {
   form: document.querySelector('form[data-todo-form]'),
@@ -13,7 +13,7 @@ const View = {
     wrapper.setAttribute('data-todo-id', config.id);
 
     wrapper.innerHTML = `<div class="taskWrapper">
-                          <div class="taskHeading">${config.title}</div>
+                          <div class="taskHeading">#${config.id} - ${config.title}</div>
                           <div class="taskDescription">${config.description}</div>
                          </div>`;
 
@@ -29,21 +29,12 @@ const View = {
     this.renderToDoItem(template);
   },
 
-  checkData() {
-    const localStorageItems = JSON.parse(localStorage.getItem(DATA_KEY));
-    console.log(localStorageItems);
-    if (localStorageItems && localStorageItems.length > 0) {
-      localStorageItems.forEach((item) => {
-        this.createToDoItemTemplate(item);
-        this.addTodoItemToList(item);
-      });
-    } else {
-      const wrapperNoData = document.createElement('div');
-      wrapperNoData.className = 'no-data-message';
-      wrapperNoData.innerHTML = '<b><h1>NO DATA</h1></b>';
-      this.toDoItemsContainer.append(wrapperNoData);
-    }
+  checkData(data) {
+    if (data && data.length > 0) return;
+
+    const wrapperNoData = document.createElement('div');
+    wrapperNoData.className = 'no-data-message';
+    wrapperNoData.innerHTML = '<b><h1>NO DATA</h1></b>';
+    this.toDoItemsContainer.append(wrapperNoData);
   },
 };
-
-View.checkData();

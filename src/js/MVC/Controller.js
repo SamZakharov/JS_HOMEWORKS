@@ -1,6 +1,5 @@
 const Controller = {
   form: document.querySelector('form[data-todo-form]'),
-  toDoItems: [],
 
   formHadler(e) {
     e.preventDefault();
@@ -18,10 +17,6 @@ const Controller = {
     const savedItem = Model.saveTodoItem(data);
     View.addTodoItemToList(savedItem);
     View.resetForm();
-
-    // Controller.toDoItems.push(data);
-    // localStorage.setItem(DATA_KEY, JSON.stringify(Controller.toDoItems));
-    // console.log(this.toDoItems);
   },
 
   loadedHandler() {
@@ -31,5 +26,7 @@ const Controller = {
   init() {
     this.form.addEventListener('submit', this.formHadler.bind(this));
     document.addEventListener('DOMContentLoaded', this.loadedHandler.bind(this));
+
+    View.checkData(Model.todos);
   },
 };
